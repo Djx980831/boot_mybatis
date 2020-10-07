@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.service.SendMailService;
 import com.example.demo.service.UserService;
+import com.example.demo.service.impl.SendMailServiceImpl;
 import com.example.demo.service.impl.UserServiceImpl;
 import com.example.demo.util.RpcResponse;
 import io.swagger.annotations.Api;
@@ -19,9 +20,18 @@ public class MailController {
     @Autowired
     private SendMailService sendMailService;
 
+    @Autowired
+    private SendMailServiceImpl sendMail;
+
     @PostMapping("/sendMail")
     public RpcResponse<String> sendMail() {
         sendMailService.sendTextMail();
+        return RpcResponse.success("success");
+    }
+
+    @PostMapping("/send")
+    public RpcResponse<String> send() throws Exception {
+        sendMail.sendMail1();
         return RpcResponse.success("success");
     }
 }

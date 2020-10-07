@@ -6,7 +6,7 @@ public class EmailSendInfo {
 
     // 发送邮件的服务器的IP和端口
     private String mailServerHost;
-    private String mailServerPort = "25";
+    private String mailServerPort = "587";
     // 邮件发送者的地址
     private String fromAddress;
     // 邮件接收者的地址
