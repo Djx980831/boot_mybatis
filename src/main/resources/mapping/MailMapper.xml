@@ -79,4 +79,13 @@
     <select id="getAllPerson" resultType="com.example.demo.entity.Person">
         select * from person
     </select>
+
+    <insert id="addPerson" parameterType="com.example.demo.entity.Person">
+        insert into person (id, password, mail) values
+        <foreach collection="personList" index="index" item="person" separator=",">
+            (
+            #{person.id,jdbcType=VARCHAR}, #{person.password,jdbcType=VARCHAR}, #{person.mail,jdbcType=VARCHAR},
+            )
+        </foreach>
+    </insert>
 </mapper>

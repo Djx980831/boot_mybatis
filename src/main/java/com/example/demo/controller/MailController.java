@@ -18,20 +18,11 @@ import org.springframework.web.bind.annotation.*;
 public class MailController {
 
     @Autowired
-    private SendMailService sendMailService;
-
-    @Autowired
     private SendMailServiceImpl sendMail;
-
-    @PostMapping("/sendMail")
-    public RpcResponse<String> sendMail() {
-        sendMailService.sendTextMail();
-        return RpcResponse.success("success");
-    }
 
     @PostMapping("/send")
     public RpcResponse<String> send() throws Exception {
-        sendMail.sendMail1();
+        sendMail.sendMail();
         return RpcResponse.success("success");
     }
 }

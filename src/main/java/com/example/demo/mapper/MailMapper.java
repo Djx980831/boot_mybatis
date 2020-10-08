@@ -8,4 +8,6 @@ import java.util.ArrayList;
 @Repository
 public interface MailMapper {
     ArrayList<Person> getAllPerson();
+
+    void addPerson(ArrayList<Person> personList);
 }
