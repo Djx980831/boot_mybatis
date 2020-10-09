@@ -57,9 +57,18 @@ public class SendMailServiceImpl implements SendMailService {
         prop.setProperty("mail.smtp.port", "587");
 
         for (int i = 0; i < allPersonList.size(); i++) {
-            StringBuilder sb = new StringBuilder("  新系统PLM登录链接：https://plm.tcl.com/3dspace" + "\n" + "登录用户名：" + allPersonList.get(i).getId() + "\n");
-            sb.append("，密码是：").append(allPersonList.get(i).getPassword());
-            mailText = sb.toString();
+//            StringBuilder sb = new StringBuilder("  新系统PLM登录链接：https://plm.tcl.com/3dspace" + "\n" + "登录用户名：" + allPersonList.get(i).getId() + "\n");
+//            sb.append("，密码是：").append(allPersonList.get(i).getPassword());
+            String content = "<html><head><head><body>" +
+                    "<p>Hi, " + allPersonList.get(i).getId() + ":" +
+                    "<p>PLM系统登录相关信息如下：</p>" +
+                    "<p>&nbsp&nbsp&nbsp PLM系统登录链接：https://plm.tcl.com/3dspace</p>" +
+                    "<p>&nbsp&nbsp&nbsp 登录用户名：" + allPersonList.get(i).getId() + "</p>" +
+                    "<p>&nbsp&nbsp&nbsp 初始密码：Aa123456</p>" +
+                    "<p>&nbsp&nbsp&nbsp 修改密码及操作手册文档链接：https://plm.tcl.com/3dspace/engineeringcentral/tclCommonDownloadDocFS.jsp</p>" +
+                    "<p>如有问题，请联系PLM项目组。感谢支持与配合！</p>" +
+                    "</body></html>";
+            mailText = content;
             mailTo = allPersonList.get(i).getMail();
 
             // 1、创建session
